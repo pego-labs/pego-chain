@@ -1,0 +1,65 @@
+[Eth]
+NetworkId = 20201022
+NoPruning = false
+NoPrefetch = false
+LightPeers = 100
+UltraLightFraction = 75
+TrieTimeout = 100000000000
+EnablePreimageRecording = false
+EWASMInterpreter = ""
+EVMInterpreter = ""
+
+[Eth.Miner]
+GasFloor = 30000000
+GasCeil = 40000000
+GasPrice = 1000000000
+Recommit = 10000000000
+Noverify = false
+
+[Eth.TxPool]
+Locals = []
+NoLocals = true
+Journal = "transactions.rlp"
+Rejournal = 3600000000000
+PriceLimit = 1000000000
+PriceBump = 10
+AccountSlots = 512
+GlobalSlots = 10000
+AccountQueue = 256
+GlobalQueue = 5000
+Lifetime = 10800000000000
+
+[Eth.GPO]
+Blocks = 20
+Percentile = 60
+OracleThreshold = 20
+
+[Node]
+IPCPath = "geth.ipc"
+HTTPHost = "localhost"
+NoUSB = true
+InsecureUnlockAllowed = false
+HTTPPort = 8545
+HTTPVirtualHosts = ["localhost"]
+HTTPModules = ["eth", "net", "web3", "txpool", "parlia"]
+WSPort = 8546
+WSModules = ["net", "web3", "eth"]
+
+[Node.P2P]
+MaxPeers = 30
+NoDiscovery = false
+BootstrapNodes = ["enode://e071e3848c6f029366a2b049a655a88b169ea7769e1e90b982883a8b41ac99ec514801bbf75720b1c256bff5b681713ae887fe66f8d0d70a7970638ee03571cd@3.112.183.195:30311","enode://bc69374b686eeb792ac92216fa71697e46c643a16e360e3bcdb5f6bf7a1f328d745eb6a35a7ba0ba02fbc35ec6d3854091084626a841fb98b57bf2e617669c7f@52.74.136.18:30311","enode://11d72079302da9292e02ef0f5648efd8818dde78594223eebada056521433c394d654b454cc79287e158e841738c1a56ba57166563b76c0c67c61a4b39789dd7@52.79.205.166:30311"]
+StaticNodes = ["enode://e071e3848c6f029366a2b049a655a88b169ea7769e1e90b982883a8b41ac99ec514801bbf75720b1c256bff5b681713ae887fe66f8d0d70a7970638ee03571cd@3.112.183.195:30311","enode://bc69374b686eeb792ac92216fa71697e46c643a16e360e3bcdb5f6bf7a1f328d745eb6a35a7ba0ba02fbc35ec6d3854091084626a841fb98b57bf2e617669c7f@52.74.136.18:30311","enode://11d72079302da9292e02ef0f5648efd8818dde78594223eebada056521433c394d654b454cc79287e158e841738c1a56ba57166563b76c0c67c61a4b39789dd7@52.79.205.166:30311"]
+ListenAddr = ":30311"
+EnableMsgEvents = false
+
+[Node.HTTPTimeouts]
+ReadTimeout = 30000000000
+WriteTimeout = 30000000000
+IdleTimeout = 120000000000
+
+[Node.LogConfig]
+FilePath = "pego.log"
+MaxBytesSize = 10485760
+Level = "info"
+FileRoot = ""
