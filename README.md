@@ -101,6 +101,7 @@ cp ./build/bin/geth /usr/local/bin/   ## copy geth to your local bin path
 ```
 
 #### 2. Setup Node Directory 
+The genesis and config files are under [config folder](./config). You may copy them your node directory
 ```shell
 mkdir -p ~/pego_node/data  ## create node directory
 cd ~/pego_node
