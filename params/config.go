@@ -41,7 +41,7 @@ var (
 	PgGenesisHash = common.HexToHash("0xcaec9a017726c658bb38e47f453350e575b63c710fca2ee9cb2818bf64f5115e")
 	//PtGenesisHash  = common.HexToHash("0xe4718fb9c3092c030d425039c6a109fb2f7de1493a38c2010937f06f3151636b")
 	PtGenesisHash  = common.HexToHash("0xc177e35eac5eff58eaf21c91487cf99b473ea64e3be8d0aaa1b847b160dcc43e")
-	Pt2GenesisHash = common.HexToHash("0xb570e5050f07e6d2182fe008b906d3a85873aa47b2ad1af0a727fb8b5de42200")
+	Pt2GenesisHash = common.HexToHash("0xf74d3bc339ab54f703420e8017fef5d681b1e11479713962e5025e4c9f107fc1")
 )
 
 // TrustedCheckpoints associates each known checkpoint with the genesis hash of
@@ -426,7 +426,7 @@ var (
 	}
 
 	P2ChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(20201022),
+		ChainID:             big.NewInt(123456),
 		HomesteadBlock:      big.NewInt(0),
 		EIP150Block:         big.NewInt(0),
 		EIP155Block:         big.NewInt(0),
@@ -450,7 +450,7 @@ var (
 			Period: 5,
 			Epoch:  60,
 		},
-		CommunitySwapBlock: big.NewInt(639360),
+		CommunitySwapBlock: big.NewInt(500000000),
 	}
 
 	// YoloV3ChainConfig contains the chain parameters to run a node on the YOLOv3 test network.
