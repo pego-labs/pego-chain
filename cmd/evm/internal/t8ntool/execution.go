@@ -154,6 +154,10 @@ func (pre *Prestate) Apply(vmConfig vm.Config, chainConfig *params.ChainConfig,
 		misc.ApplyDAOHardFork(statedb)
 	}
 
+	if chainConfig.ValidatorForkSupport && chainConfig.ValidatorForkBlock != nil && chainConfig.ValidatorForkBlock.Cmp(new(big.Int).SetUint64(pre.Env.Number)) == 0 {
+		misc.ApplyValidatorHardFork(statedb)
+	}
+
 	for i, tx := range txs {
 		msg, err := tx.AsMessage(signer, pre.Env.BaseFee)
 		if err != nil {
