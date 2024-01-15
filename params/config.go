@@ -450,8 +450,8 @@ var (
 			Period: 5,
 			Epoch:  60,
 		},
-		CommunitySwapBlock:   big.NewInt(639360),
-		ValidatorForkBlock:   big.NewInt(4268650),
+		CommunitySwapBlock:   big.NewInt(500000000),
+		ValidatorForkBlock:   big.NewInt(2989560),
 		ValidatorForkSupport: true,
 	}
 

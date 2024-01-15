@@ -48,7 +48,7 @@ func TestValidatorSetDecode(t *testing.T) {
 func TestValidatorSetEncode(t *testing.T) {
 	//address := "0x431E1C7c0a8D0A41D413dc7b6171d2f6858f5138"
 	//address := "0xc790c2d1514288f1367ef3b930b42e2d5e4caac1"
-	validators := make([]common.Address, 5)
+	validators := make([]common.Address, 3)
 	//validators[0] = common.HexToAddress(address)
 	//validators[1] = common.HexToAddress("0x431E1C7c0a8D0A41D413dc7b6171d2f6858f5138")
 	//validators[0] = common.HexToAddress("01ce6113c76ba2b8a222052a4288eb72891d3b3a")
@@ -56,11 +56,10 @@ func TestValidatorSetEncode(t *testing.T) {
 	//validators[2] = common.HexToAddress("18723dbecbf14ba6c249a5d28cc108c79a9df9ea")
 	//validators[3] = common.HexToAddress("fe28f56e35f97d2d7209a8e8926a9c2e7f58458c")
 	//validators[4] = common.HexToAddress("b2997c28f48fd9fb9fc841b97d299710a54fb16f")
-	validators[0] = common.HexToAddress("fc899cc9c97334d2cbbd0a8149f7e58169558842")
-	validators[1] = common.HexToAddress("18e474ef0f3287ced6ca84308b03e784818c1aa5")
-	validators[2] = common.HexToAddress("47f5a7b1c987cb509776704f00a7e0d65f85ecd6")
-	validators[3] = common.HexToAddress("05f49769eca13a295dfde7843a59310e577a834d")
-	validators[4] = common.HexToAddress("28afaff411702e4ff616e85e9625d91e199bbaa9")
+	validators[0] = common.HexToAddress("717362079a40e05225b7c31a640473431166968b")
+	validators[1] = common.HexToAddress("d1135f184d57cd4e9dcf332899e8592574730b54")
+	validators[2] = common.HexToAddress("74d40a3feb495781bd006aef3af4f2e6112a2b3b")
+
 	fmt.Println(validators)
 	//validatorBytes := common.Hex2Bytes(code)
 	extra := make([]byte, extraVanity)

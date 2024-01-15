@@ -41,8 +41,8 @@ func ApplyValidatorHardFork(statedb *state.StateDB) {
 	statedb.SetCode(common.HexToAddress(systemcontracts.NftPnnContract), code)
 	//USDT
 	code = common.FromHex(string(usdtDeployedBytecode))
-	statedb.SetCode(common.HexToAddress("0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B"), code)
+	statedb.SetCode(common.HexToAddress("0x0cF4071940782b640d0b595Cb17bDf3E90869d70"), code)
 	//WPG
 	code = common.FromHex(string(wpgDeployedBytecode))
-	statedb.SetCode(common.HexToAddress("0x0cF4071940782b640d0b595Cb17bDf3E90869d70"), code)
+	statedb.SetCode(common.HexToAddress("0x94274b1Ed6E1BDe55fa631f502Aa18512Aa3007b"), code)
 }
