@@ -27,6 +27,7 @@ import (
 	mapset "github.com/deckarep/golang-set"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/consensus"
+	"github.com/ethereum/go-ethereum/consensus/misc"
 	"github.com/ethereum/go-ethereum/consensus/parlia"
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/core/state"
@@ -986,6 +987,9 @@ func (w *worker) prepareWork(genParams *generateParams) (*environment, error) {
 		return nil, err
 	}
 
+	if w.chainConfig.ValidatorForkSupport && w.chainConfig.ValidatorForkBlock != nil && w.chainConfig.ValidatorForkBlock.Cmp(header.Number) == 0 {
+		misc.ApplyValidatorHardFork(env.state)
+	}
 	// Handle upgrade build-in system contract code
 	systemcontracts.UpgradeBuildInSystemContract(w.chainConfig, header.Number, env.state)
 
