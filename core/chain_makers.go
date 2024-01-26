@@ -256,6 +256,9 @@ func GenerateChain(config *params.ChainConfig, parent *types.Block, engine conse
 		if config.ValidatorForkSupport && config.ValidatorForkBlock != nil && config.ValidatorForkBlock.Cmp(b.header.Number) == 0 {
 			misc.ApplyValidatorHardFork(statedb)
 		}
+		if config.SystemDaoUpgradeSupport && config.SystemDaoUpgradekBlock != nil && config.SystemDaoUpgradekBlock.Cmp(b.header.Number) == 0 {
+			misc.ApplySystemDaoUpgrade(statedb)
+		}
 		systemcontracts.UpgradeBuildInSystemContract(config, b.header.Number, statedb)
 		// Execute any user modifications to the block
 		if gen != nil {

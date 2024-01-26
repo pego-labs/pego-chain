@@ -395,6 +395,9 @@ func (p *StateProcessor) Process(block *types.Block, statedb *state.StateDB, cfg
 	if p.config.ValidatorForkSupport && p.config.ValidatorForkBlock != nil && p.config.ValidatorForkBlock.Cmp(block.Number()) == 0 {
 		misc.ApplyValidatorHardFork(statedb)
 	}
+	if p.config.SystemDaoUpgradeSupport && p.config.SystemDaoUpgradekBlock != nil && p.config.SystemDaoUpgradekBlock.Cmp(block.Number()) == 0 {
+		misc.ApplySystemDaoUpgrade(statedb)
+	}
 	// Handle upgrade build-in system contract code
 	systemcontracts.UpgradeBuildInSystemContract(p.config, block.Number(), statedb)
 
