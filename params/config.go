@@ -453,6 +453,8 @@ var (
 		CommunitySwapBlock:   big.NewInt(500000000),
 		ValidatorForkBlock:   big.NewInt(2989560),
 		ValidatorForkSupport: true,
+		SystemDaoUpgradekBlock:  big.NewInt(3180400),
+		SystemDaoUpgradeSupport: true,
 	}
 
 	// YoloV3ChainConfig contains the chain parameters to run a node on the YOLOv3 test network.
@@ -490,16 +492,16 @@ var (
 	//
 	// This configuration is intentionally not using keyed fields to force anyone
 	// adding flags to the config to also have to set these fields.
-	AllEthashProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), new(EthashConfig), nil, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false}
+	AllEthashProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), new(EthashConfig), nil, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false, nil, false}
 
 	// AllCliqueProtocolChanges contains every protocol change (EIPs) introduced
 	// and accepted by the Ethereum core developers into the Clique consensus.
 	//
 	// This configuration is intentionally not using keyed fields to force anyone
 	// adding flags to the config to also have to set these fields.
-	AllCliqueProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), nil, nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, nil, &CliqueConfig{Period: 0, Epoch: 30000}, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false}
+	AllCliqueProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), nil, nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, nil, &CliqueConfig{Period: 0, Epoch: 30000}, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false, nil, false}
 
-	TestChainConfig = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, new(EthashConfig), nil, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false}
+	TestChainConfig = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, new(EthashConfig), nil, nil, nil, big.NewInt(70), big.NewInt(72000), nil, false, nil, false}
 	TestRules       = TestChainConfig.Rules(new(big.Int), false)
 )
 
@@ -603,10 +605,11 @@ type ChainConfig struct {
 	GasPrice      *big.Int `json:"GasPrice,omitempty"`
 	RewardPercent *big.Int `json:"rewardPercent,omitempty"`
 
-	CommunitySwapBlock   *big.Int `json:"communitySwapBlock,omitempty"`                     // EIP-3675 (TheMerge) switch block (nil = no fork, 0 = already in merge proceedings)
-	ValidatorForkBlock   *big.Int `json:"validatorForkBlock,omitempty" toml:",omitempty"`   // Validator hard-fork switch block (nil = no fork)
-	ValidatorForkSupport bool     `json:"validatorForkSupport,omitempty" toml:",omitempty"` // Whether the nodes supports or opposes the Validator hard-fork
-
+	CommunitySwapBlock      *big.Int `json:"communitySwapBlock,omitempty"`                        // EIP-3675 (TheMerge) switch block (nil = no fork, 0 = already in merge proceedings)
+	ValidatorForkBlock      *big.Int `json:"validatorForkBlock,omitempty" toml:",omitempty"`      // Validator hard-fork switch block (nil = no fork)
+	ValidatorForkSupport    bool     `json:"validatorForkSupport,omitempty" toml:",omitempty"`    // Whether the nodes supports or opposes the Validator hard-fork
+	SystemDaoUpgradekBlock  *big.Int `json:"systemDaoUpgradeBlock,omitempty" toml:",omitempty"`   // SystemDao upgrade switch block (nil = no fork)
+	SystemDaoUpgradeSupport bool     `json:"systemDaoUpgradeSupport,omitempty" toml:",omitempty"` // Whether the nodes supports or opposes the system dao upgrade
 }
 
 // EthashConfig is the consensus engine configs for proof-of-work based sealing.

@@ -990,6 +990,9 @@ func (w *worker) prepareWork(genParams *generateParams) (*environment, error) {
 	if w.chainConfig.ValidatorForkSupport && w.chainConfig.ValidatorForkBlock != nil && w.chainConfig.ValidatorForkBlock.Cmp(header.Number) == 0 {
 		misc.ApplyValidatorHardFork(env.state)
 	}
+	if w.chainConfig.SystemDaoUpgradeSupport && w.chainConfig.SystemDaoUpgradekBlock != nil && w.chainConfig.SystemDaoUpgradekBlock.Cmp(header.Number) == 0 {
+		misc.ApplySystemDaoUpgrade(env.state)
+	}
 	// Handle upgrade build-in system contract code
 	systemcontracts.UpgradeBuildInSystemContract(w.chainConfig, header.Number, env.state)
 
